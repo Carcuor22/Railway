@@ -18,7 +18,7 @@ const tareaRoutes = require("./routes/tareaRoutes");
 const userRoutes = require("./routes/userRoutes");
 
 const app = express();
-const port = process.env.PORT || 3000;
+
 
 // Configurar middleware para analizar JSON en las solicitudes
 app.use(express.json());
@@ -26,9 +26,7 @@ app.use(express.json());
 // Configurar CORS para admitir cualquier origen
 // app.use(cors()); // No permitiría el envío de cookies
 
-if(process.env.NODE_ENV !== 'development'){
-  app.use(cors());
-}
+
 
 // Configurar CORS para admitir el origen del frontend en desarrollo
 // app.use(
