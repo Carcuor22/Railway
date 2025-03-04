@@ -1,7 +1,8 @@
 // Importar libreria para manejo de ficheros de configuración
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV || "development"}`,
-});// Importar fichero de configuración con variables de entorno
+});
+// Importar fichero de configuración con variables de entorno
 const config = require("./config/config");
 // Importar librería express --> web server
 const express = require("express");
@@ -17,12 +18,17 @@ const tareaRoutes = require("./routes/tareaRoutes");
 const userRoutes = require("./routes/userRoutes");
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 // Configurar middleware para analizar JSON en las solicitudes
 app.use(express.json());
 
 // Configurar CORS para admitir cualquier origen
 // app.use(cors()); // No permitiría el envío de cookies
+
+if(process.env.NODE_ENV !== 'development'){
+  app.use(cors());
+}
 
 // Configurar CORS para admitir el origen del frontend en desarrollo
 // app.use(
